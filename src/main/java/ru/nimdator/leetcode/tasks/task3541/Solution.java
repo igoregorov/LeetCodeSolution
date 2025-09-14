@@ -1,11 +1,11 @@
-package ru.nimdator.leetcode.task3541;
+package ru.nimdator.leetcode.tasks.task3541;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-class Solution {
+public class Solution {
     private static final Set<Character> voewlSet = new HashSet<>();
 
     static {

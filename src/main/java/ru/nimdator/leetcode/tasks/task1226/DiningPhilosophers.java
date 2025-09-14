@@ -1,9 +1,9 @@
-package ru.nimdator.leetcode.task1226;
+package ru.nimdator.leetcode.tasks.task1226;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-class DiningPhilosophers {
+public class DiningPhilosophers {
     private final Lock[] forks = new Lock[5];
 
     public DiningPhilosophers() {
@@ -17,19 +17,18 @@ class DiningPhilosophers {
                            Runnable pickRightFork,
                            Runnable eat,
                            Runnable putLeftFork,
-                           Runnable putRightFork) throws InterruptedException {
+                           Runnable putRightFork) {
 
-        int leftFork = philosopher;
         int rightFork = philosopher != 4 ? philosopher + 1 : 0;
 
         if (philosopher % 2 == 0) {
             forks[rightFork].lock();
             pickRightFork.run();
 
-            forks[leftFork].lock();
+            forks[philosopher].lock();
             pickLeftFork.run();
         } else {
-            forks[leftFork].lock();
+            forks[philosopher].lock();
             pickLeftFork.run();
 
             forks[rightFork].lock();
@@ -43,10 +42,10 @@ class DiningPhilosophers {
             forks[rightFork].unlock();
 
             putLeftFork.run();
-            forks[leftFork].unlock();
+            forks[philosopher].unlock();
         } else {
             putLeftFork.run();
-            forks[leftFork].unlock();
+            forks[philosopher].unlock();
 
             putRightFork.run();
             forks[rightFork].unlock();
