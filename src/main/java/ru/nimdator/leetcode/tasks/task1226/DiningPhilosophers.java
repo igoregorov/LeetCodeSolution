@@ -3,6 +3,7 @@ package ru.nimdator.leetcode.tasks.task1226;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
 public class DiningPhilosophers {
     private final Lock[] forks = new Lock[5];
 

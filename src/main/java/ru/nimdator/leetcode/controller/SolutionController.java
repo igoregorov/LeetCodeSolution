@@ -1,6 +1,6 @@
 package ru.nimdator.leetcode.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +13,10 @@ import ru.nimdator.leetcode.service.SolutionService;
 
 @RestController
 @RequestMapping("/api/tasks")
+@RequiredArgsConstructor
 public class SolutionController {
 
-    @Autowired
-    private SolutionService solutionService;
+    private final SolutionService solutionService;
 
     @GetMapping("/{taskId}/code")
     public ResponseEntity<String> getCode(@PathVariable String taskId) {
